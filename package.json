@@ -1,0 +1,37 @@
+{
+  "name": "webApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-client": "webpack",
+    "build-client-watch": "webpack -w",
+    "deploy": "script/deploy",
+    "lint": "eslint ./ --ignore-path .gitignore",
+    "postinstall": "touch secrets.js",
+    "seed": "node seed",
+    "start": "node server",
+    "start-dev": "NODE_ENV='development' npm run build-client-watch & npm run start-server",
+    "start-server": "nodemon server -e html,js,scss --ignore public",
+    "test": "NODE_ENV='test' DATABASE_URL='postgres://localhost:5432/graceCropper-test' mocha ./server/**/*.spec.js ./server/**/**/*.spec.js ./client/**/*.spec.js --compilers js:babel-register"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.3.2",
+    "nodemon": "^1.17.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "sequelize": "^4.37.1",
+    "webpack": "^4.1.1",
+    "webpack-livereload-plugin": "^2.0.0"
+  }
+}
